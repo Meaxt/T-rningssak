@@ -2,48 +2,58 @@ $(document).ready(function() {
 
 //main
     addListener();
-//    console.log(info)
 
 
 
-
+    //Klick funktionen
     function addListener() {
-//        console.log("hej");
+ 
         $(".btn").click(function() {
-            console.log("klick");
-//            getData();
-//            var antal = getData();
-for(i= 0; i < getData(); i++){
-            rollDice();
-            }
+            $("p").remove()
+
+            rollDice(getData());
+
         });
 //hindra form från att ladda om
         $('form').submit(function(event) {
             event.preventDefault();
 
-            console.log("form hindrat");
+
         });
 
-    }
+    } //addListener slut
 //hämta data
     function getData() {
         var info = ($(".radBtn:checked").val());
-//        console.log(info)
+
         return info;
-        
 
-    }
+
+    }//data slut
+
     //slumpa tal
-    function rollDice() {
-//        for($i= 0; $i < info; i++){
-//            console.log("hej")
-        var myNumber = Math.floor((Math.random() * 6) + 1);
-//        return nummer;
-        console.log(myNumber)
+    function rollDice(numberDice) {
+        var summa = 0;
+        //loppar så många gånger man har fyllt i
+        for (i = 0; i < numberDice; i++) {
 
-        
-//    }
-    }
+
+            //slumpar tal
+            var myNumber = Math.floor((Math.random() * 6) + 1);
+            //lägger ihop summan av vad man får på varje tärning
+            summa = summa + myNumber;
+            //skriver ut vad tärningen visar
+            $('<p>').text(myNumber).appendTo(".resultat");
+
+        }
+        //skriver ut summan
+        $('<p>').text(summa).appendTo(" .stat");
+
+
+
+
+
+    }//slumpa slut
 
 
 
